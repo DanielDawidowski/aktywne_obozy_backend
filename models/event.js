@@ -43,9 +43,9 @@ const eventSchema = new mongoose.Schema({
         trim: true,
         maxlength: 32
     },
-    // images: {
-    //   type: Array,
-    // },
+    images: {
+      type: Array,
+    },
     status: {
       type: String,
       default: "Aktualne",

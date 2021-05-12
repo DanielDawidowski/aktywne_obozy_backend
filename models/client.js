@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
 const { ObjectId } = mongoose.Schema;
 
 const ClientSchema = new mongoose.Schema(
@@ -9,6 +8,12 @@ const ClientSchema = new mongoose.Schema(
             trim: true,
             required: true,
         },
+        slug: {
+            type: String,
+            unique: true,
+            lowercase: true,
+            index: true,
+          },
         email: {
             type: String,
             trim: true,
@@ -23,6 +28,12 @@ const ClientSchema = new mongoose.Schema(
             type: ObjectId,
             ref: "Event"
         },
+        eventName: { 
+            type: String,
+        },
+        price: { 
+            type: Number
+        },
         message: {
             type: String,
             trim: true,
@@ -30,7 +41,6 @@ const ClientSchema = new mongoose.Schema(
         status: {
             type: String,
             default: "Niezatwierdzony",
-            enum: ["Niezatwierdzony", "Zatwierdzony"]
         },
     },
     { timestamps: true }

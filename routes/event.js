@@ -12,7 +12,6 @@ router.post("/event", authCheck, adminCheck, create);
 router.get("/event/:slug", read);
 router.get("/events/:count", listAll); // products/100
 router.delete("/event/:slug", authCheck, adminCheck, remove);
-
 router.put("/event/:slug", authCheck, adminCheck, update);
 
 module.exports = router;

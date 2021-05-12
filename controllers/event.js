@@ -39,7 +39,7 @@ exports.remove = async (req, res) => {
 
 exports.read = async (req, res) => {
   const event = await Event.findOne({ slug: req.params.slug })
-    .populate("category")
+    .populate("category", "_id name")
     .exec();
   res.json(event);
 };
