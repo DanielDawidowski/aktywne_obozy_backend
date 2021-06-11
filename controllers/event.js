@@ -1,5 +1,5 @@
 const Event = require('../models/event');
-const slugify = require("slugify");
+const slugify = require('slugify');
 
 exports.create = async (req, res) => {
   try {
@@ -19,8 +19,8 @@ exports.create = async (req, res) => {
 exports.listAll = async (req, res) => {
   let events = await Event.find({})
     .limit(parseInt(req.params.count))
-    .populate("category")
-    .sort([["createdAt", "desc"]])
+    .populate('category')
+    .sort([['createdAt', 'desc']])
     .exec();
   res.json(events);
 };
@@ -33,13 +33,13 @@ exports.remove = async (req, res) => {
     res.json(deleted);
   } catch (err) {
     console.log(err);
-    return res.staus(400).send("Event delete failed");
+    return res.staus(400).send('Event delete failed');
   }
 };
 
 exports.read = async (req, res) => {
   const event = await Event.findOne({ slug: req.params.slug })
-    .populate("category", "_id name")
+    .populate('category', '_id name')
     .exec();
   res.json(event);
 };
@@ -56,7 +56,7 @@ exports.update = async (req, res) => {
     ).exec();
     res.json(updated);
   } catch (err) {
-    console.log("EVENT UPDATE ERROR ----> ", err);
+    console.log('EVENT UPDATE ERROR ----> ', err);
     // return res.status(400).send("Product update failed");
     res.status(400).json({
       err: err.message,
@@ -76,7 +76,6 @@ exports.update = async (req, res) => {
 //     })
 // }
 
-
 // exports.remove = (req, res) => {
 //     Event.findByIdAndRemove(req.params.eventId, (err, event) => {
 //     // As always, handle any potential errors:
@@ -89,13 +88,12 @@ exports.update = async (req, res) => {
 //     };
 //         return res.status(200).send(response);
 //     });
-// }    
-
+// }
 
 // exports.list = (req, res) => {
 //     let sortBy = req.query.sortBy ? req.query.sortBy : "_id";
 //     let limit = req.query.limit ? parseInt(req.query.limit) : 6;
-    
+
 //     Event.find()
 //         .where({ typeEvent: sortBy })
 //         .limit(limit)
@@ -107,7 +105,7 @@ exports.update = async (req, res) => {
 //             }
 //             res.json(events);
 //         });
-// }; 
+// };
 
 // exports.listEvents = (req, res) => {
 //     Event.find()
@@ -123,17 +121,17 @@ exports.update = async (req, res) => {
 
 // exports.getTypeEvents = (req, res) => {
 //    res.json(Event.schema.path("typeEvent").enumValues);
-// }; 
+// };
 
 // exports.getStatusValues = (req, res) => {
 //    res.json(Event.schema.path("status").enumValues);
-// }; 
+// };
 
 // // exports.addClientToEventHistory = (req, res, next) => {
 // //     let history = [];
- 
+
 // //     history.push({ name: req.body.name, email: req.body.email, phone: req.body.phone })
-        
+
 // //     Event.findOneAndUpdate(
 // //         {_id: req.event._id },
 // //         { $push: { history: history } },
@@ -157,7 +155,6 @@ exports.update = async (req, res) => {
 //             }
 //         }
 
-
 //     console.log(req.body._id)
 //     //    let bulkOps = [];
 //     //     let decreaseClient = {
@@ -166,7 +163,7 @@ exports.update = async (req, res) => {
 //     //                 update: { amount: -event.count }
 //     //             }
 //     //     }
-    
+
 //     //      bulkOps.push(decreaseClient);
 
 //     Event.bulkWrite(bulkOps, {}, (error, events) => {

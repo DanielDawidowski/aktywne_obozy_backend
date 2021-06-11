@@ -1,18 +1,24 @@
-const express = require('express')
-const router = express.Router()
+const express = require('express');
+const router = express.Router();
 
 // middlewares
-const { authCheck, adminCheck } = require("../middlewares/auth");
+const { authCheck, adminCheck } = require('../middlewares/auth');
 
 // controller
-const { create, listAll, remove, read, update, } = require("../controllers/event");
+const {
+  create,
+  listAll,
+  remove,
+  read,
+  update,
+} = require('../controllers/event');
 
 // routes
-router.post("/event", authCheck, adminCheck, create);
-router.get("/event/:slug", read);
-router.get("/events/:count", listAll); // products/100
-router.delete("/event/:slug", authCheck, adminCheck, remove);
-router.put("/event/:slug", authCheck, adminCheck, update);
+router.post('/event', authCheck, adminCheck, create);
+router.get('/event/:slug', read);
+router.get('/events/:count', listAll); // products/100
+router.delete('/event/:slug', authCheck, adminCheck, remove);
+router.put('/event/:slug', authCheck, adminCheck, update);
 
 module.exports = router;
 
@@ -20,7 +26,6 @@ module.exports = router;
 // const { userById } = require('../controllers/user')
 // const { requireSignin, isAdmin, isAuth } = require('../controllers/auth')
 // const { readClients } = require('../controllers/client')
-
 
 // router.get("/event/:eventId", read)
 // router.post("/event/create/:userId", requireSignin, isAuth, isAdmin, create)
@@ -34,6 +39,5 @@ module.exports = router;
 
 // router.param("eventId", eventById)
 // router.param("userId", userById)
-
 
 // module.exports = router;
